@@ -1,4 +1,4 @@
-# Musala-soft-mobile-app
+# Musala-soft-project-mobile-app
 
 ## Hello, we are GGFC!
 
