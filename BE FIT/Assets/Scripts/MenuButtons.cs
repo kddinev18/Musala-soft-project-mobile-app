@@ -30,6 +30,18 @@ public class MenuButtons : MonoBehaviour
         }
     }
 
+    public void BackToMenu()
+    {
+        StartCoroutine(wait2());
+    }
+
+    IEnumerator wait2()
+    {
+        sceneTrasition.SetBool("EndScene", true);
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + index);
+    }
+
     IEnumerator wait()
     {
         startButton.SetBool("PressButton", true);

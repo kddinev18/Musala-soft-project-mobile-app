@@ -368,8 +368,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: eb6b3a98f30861241a6efb4ed763ae36, type: 3}
-    m_FontSize: 59
+    m_Font: {fileID: 12800000, guid: 15a91cfe8392cbc42b5450f3ec047ed0, type: 3}
+    m_FontSize: 57
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -380,7 +380,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Protein Bars
 --- !u!222 &224501506
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -946,8 +946,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: eb6b3a98f30861241a6efb4ed763ae36, type: 3}
-    m_FontSize: 59
+    m_Font: {fileID: 12800000, guid: 15a91cfe8392cbc42b5450f3ec047ed0, type: 3}
+    m_FontSize: 57
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -958,7 +958,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Fitness schedule
 --- !u!222 &912908429
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1801,7 +1801,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1850613070
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1936,8 +1936,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: eb6b3a98f30861241a6efb4ed763ae36, type: 3}
-    m_FontSize: 59
+    m_Font: {fileID: 12800000, guid: 15a91cfe8392cbc42b5450f3ec047ed0, type: 3}
+    m_FontSize: 57
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -1948,7 +1948,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Protein Shakes
 --- !u!222 &1951565474
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2015,8 +2015,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: eb6b3a98f30861241a6efb4ed763ae36, type: 3}
-    m_FontSize: 59
+    m_Font: {fileID: 12800000, guid: 15a91cfe8392cbc42b5450f3ec047ed0, type: 3}
+    m_FontSize: 57
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -2027,7 +2027,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Healthy food
 --- !u!222 &2007134584
 CanvasRenderer:
   m_ObjectHideFlags: 0
