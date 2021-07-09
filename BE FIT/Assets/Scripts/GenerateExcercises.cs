@@ -23,6 +23,7 @@ public class GenerateExcercises : MonoBehaviour
     {
         timeDesplay.enabled = false;
         generate(excerciseHolder.excercises, excerciseHolder.description);
+        experienceSystem.levelCapacity += 50;
         StartCoroutine(wait());
     }
 
