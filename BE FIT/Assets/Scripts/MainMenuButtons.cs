@@ -4,14 +4,25 @@ using UnityEngine;
 
 public class MainMenuButtons : MonoBehaviour
 {
-    [SerializeField] private Animator startButton;
+    [SerializeField] private Animator menu;
+    [SerializeField] private Animator loseWeight;
     public void openMenu()
     {
-        startButton.SetBool("isPressed", true);
+        menu.SetBool("isPressed", true);
     }
 
     public void closeMenu()
     {
-        startButton.SetBool("isPressed", false);
+        menu.SetBool("isPressed", false);
+    }
+
+    public void openLoseWeight()
+    {
+        loseWeight.SetBool("isPressed", true);
+    }
+
+    public void closeLoseWeight()
+    {
+        loseWeight.SetBool("isPressed", false);
     }
 }
