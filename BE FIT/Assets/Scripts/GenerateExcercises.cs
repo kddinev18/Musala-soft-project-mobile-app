@@ -12,12 +12,14 @@ public class GenerateExcercises : MonoBehaviour
     [SerializeField] private Text excercisesDescriptionDisplay;
     [SerializeField] private Text timeDesplay;
 
+    [SerializeField] private Animator loseWeightData;
+
     private bool isStarted = false;
     private int excerciseDone = 1;
 
     public void nextExcercise()
     {
-        generateExcercise(excerciseHolder.excercises, excerciseHolder.description, excerciseHolder.count);
+        StartCoroutine(wait());
     }
 
     private void generateExcercise(string[] excerciseName, string[] excerciseDesc, string[] excerciseCount)
@@ -26,5 +28,15 @@ public class GenerateExcercises : MonoBehaviour
         excercisesNameDisplay.text = excerciseName[randomindex];
         excercisesDescriptionDisplay.text = excerciseDesc[randomindex];
         timeDesplay.text = excerciseCount[randomindex];
+    }
+
+    IEnumerator wait()
+    {
+        loseWeightData.SetBool("isNewExercise", true);
+        loseWeightData.SetBool("generateNewExercise", true);
+        yield return new WaitForSeconds(1.05f);
+        loseWeightData.SetBool("isNewExercise", false);
+        loseWeightData.SetBool("generateNewExercise", false);
+        generateExcercise(excerciseHolder.excercises, excerciseHolder.description, excerciseHolder.count);
     }
 }
