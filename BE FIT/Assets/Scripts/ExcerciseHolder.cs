@@ -9,13 +9,15 @@ public class ExcerciseHolder : MonoBehaviour
 {
     public string[] excercises;
     public string[] description;
-    public string[] time;
+    public string[] count;
+    public string[] calories;
 
     void Start()
     {
         excercises = File.ReadAllLines("Assets\\Data Files\\ExcerciseNameData.txt").ToArray();
         description = File.ReadAllLines("Assets\\Data Files\\ExcerciseDescriptionData.txt").ToArray();
-        time = File.ReadAllLines("Assets\\Data Files\\ExcerciseTimeData.txt").ToArray();
+        count = File.ReadAllLines("Assets\\Data Files\\ExcerciseCountData").ToArray();
+        calories = File.ReadAllLines("Assets\\Data Files\\ExcerciseCaloriesData").ToArray();
     }
 
 }

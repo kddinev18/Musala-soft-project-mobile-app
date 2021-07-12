@@ -11,30 +11,31 @@ public class GenerateExcercises : MonoBehaviour
     [SerializeField] private Text excercisesNameDisplay;
     [SerializeField] private Text excercisesDescriptionDisplay;
     [SerializeField] private Text timeDesplay;
+
+    private bool isStarted = false;
+    private int excerciseDone = 1;
     void Start()
     {
-        
+        StartCoroutine(wait());
     }
 
-    void Update()
+    public void nextExcercise()
     {
-       
+        generateExcercise(excerciseHolder.excercises, excerciseHolder.description, excerciseHolder.count);
     }
 
-    private void generateExcercise(string[] excerciseName, string[] excerciseDesc, string excerciseTime)
+    private void generateExcercise(string[] excerciseName, string[] excerciseDesc, string[] excerciseCount)
     {
-        int randomindex = Random.Range(0f, 3f);
-        excercisesNameDisplay = excerciseName[randomindex];
-        excercisesDescriptionDisplay = excerciseDesc[randomindex];
-        timeDesplay = excerciseTime[randomindex];
+        int randomindex = Random.Range(0, 3);
+        excercisesNameDisplay.text = excerciseName[randomindex];
+        excercisesDescriptionDisplay.text = excerciseDesc[randomindex];
+        timeDesplay.text = excerciseCount[randomindex];
     }
 
 
     IEnumerator wait()
     {
-        yield return new WaitForSeconds(3f);
-        isStarted = true;
         yield return new WaitForSeconds(.1f);
-        timeDesplay.enabled = true;
+        generateExcercise(excerciseHolder.excercises, excerciseHolder.description, excerciseHolder.count);
     }
 }
