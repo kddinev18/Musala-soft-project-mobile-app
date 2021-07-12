@@ -14,10 +14,6 @@ public class GenerateExcercises : MonoBehaviour
 
     private bool isStarted = false;
     private int excerciseDone = 1;
-    void Start()
-    {
-        StartCoroutine(wait());
-    }
 
     public void nextExcercise()
     {
@@ -30,12 +26,5 @@ public class GenerateExcercises : MonoBehaviour
         excercisesNameDisplay.text = excerciseName[randomindex];
         excercisesDescriptionDisplay.text = excerciseDesc[randomindex];
         timeDesplay.text = excerciseCount[randomindex];
-    }
-
-
-    IEnumerator wait()
-    {
-        yield return new WaitForSeconds(.1f);
-        generateExcercise(excerciseHolder.excercises, excerciseHolder.description, excerciseHolder.count);
     }
 }

@@ -25,4 +25,9 @@ public class MainMenuButtons : MonoBehaviour
     {
         loseWeight.SetBool("isPressed", false);
     }
+
+    public void startTraining()
+    {
+        loseWeight.SetBool("isTraining", true);
+    }
 }

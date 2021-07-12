@@ -16,8 +16,8 @@ public class ExcerciseHolder : MonoBehaviour
     {
         excercises = File.ReadAllLines("Assets\\Data Files\\ExcerciseNameData.txt").ToArray();
         description = File.ReadAllLines("Assets\\Data Files\\ExcerciseDescriptionData.txt").ToArray();
-        count = File.ReadAllLines("Assets\\Data Files\\ExcerciseCountData").ToArray();
-        calories = File.ReadAllLines("Assets\\Data Files\\ExcerciseCaloriesData").ToArray();
+        count = File.ReadAllLines("Assets\\Data Files\\ExcerciseCountData.txt").ToArray();
+        calories = File.ReadAllLines("Assets\\Data Files\\ExcerciseCaloriesData.txt").ToArray();
     }
 
 }
