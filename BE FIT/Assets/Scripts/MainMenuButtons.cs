@@ -34,5 +34,6 @@ public class MainMenuButtons : MonoBehaviour
     public void BackToLoseWeightMenu()
     {
         loseWeight.SetBool("goBack", true);
+        loseWeight.SetBool("isTraining", false);
     }
 }
