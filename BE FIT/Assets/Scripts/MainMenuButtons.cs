@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainMenuButtons : MonoBehaviour
 {
     [SerializeField] private Animator menu;
     [SerializeField] private Animator loseWeight;
+    [SerializeField] private GenerateExcercises generateExcercises;
+    [SerializeField] private Button nextExerciseButton;
     public void openMenu()
     {
         menu.SetBool("isPressed", true);
@@ -28,12 +31,30 @@ public class MainMenuButtons : MonoBehaviour
 
     public void startTraining()
     {
-        loseWeight.SetBool("isTraining", true);
+        if (!(generateExcercises.trainingsLeft == 0 || generateExcercises.trainingsLeftWeek == 0))
+        {
+            nextExerciseButton.interactable = true;
+            loseWeight.SetBool("goBack", false);
+            loseWeight.SetBool("isTraining", true);
+        }
+        else
+        {
+            StartCoroutine(wait());
+        }
     }
 
     public void BackToLoseWeightMenu()
     {
         loseWeight.SetBool("goBack", true);
         loseWeight.SetBool("isTraining", false);
+    }
+
+    IEnumerator wait()
+    {
+        generateExcercises.trainingsLeftDisplay.color = Color.red;
+        generateExcercises.trainingsLeftWeekDisplay.color = Color.red;
+        yield return new WaitForSeconds(1.05f);
+        generateExcercises.trainingsLeftWeekDisplay.color = Color.white;
+        generateExcercises.trainingsLeftDisplay.color = Color.white;
     }
 }

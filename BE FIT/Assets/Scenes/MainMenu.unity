@@ -990,6 +990,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menu: {fileID: 1150477943}
   loseWeight: {fileID: 2139993596}
+  generateExcercises: {fileID: 1663616478}
+  nextExerciseButton: {fileID: 1990425760}
 --- !u!1 &418398566
 GameObject:
   m_ObjectHideFlags: 0
@@ -4716,6 +4718,11 @@ MonoBehaviour:
   excercisesDescriptionDisplay: {fileID: 239051348}
   timeDesplay: {fileID: 1263996462}
   loseWeightData: {fileID: 2139993596}
+  nextExerciseButton: {fileID: 1990425760}
+  trainingsLeftDisplay: {fileID: 1599048639}
+  trainingsLeft: 4
+  trainingsLeftWeekDisplay: {fileID: 1805411929}
+  trainingsLeftWeek: 28
 --- !u!4 &1663616479
 Transform:
   m_ObjectHideFlags: 0
