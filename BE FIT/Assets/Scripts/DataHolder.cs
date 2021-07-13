@@ -22,9 +22,11 @@ public class DataHolder : MonoBehaviour
         excercises = File.ReadAllLines("Assets\\Data Files\\ExcerciseNameData.txt").ToArray();
         description = File.ReadAllLines("Assets\\Data Files\\ExcerciseDescriptionData.txt").ToArray();
         count = File.ReadAllLines("Assets\\Data Files\\ExcerciseCountData.txt").ToArray();
-        calories = File.ReadAllLines("Assets\\Data Files\\ExcerciseCaloriesData.txt").ToArray(); 
-        
-        
-    }
+        calories = File.ReadAllLines("Assets\\Data Files\\ExcerciseCaloriesData.txt").ToArray();
 
+        healthyFoodName = File.ReadAllLines("Assets\\Data Files\\HealthyFoodNameData.txt").ToArray();
+        healthyFoodDesc = File.ReadAllLines("Assets\\Data Files\\HealthyFoodDescData.txt").ToArray();
+        healthyFoodCalories = File.ReadAllLines("Assets\\Data Files\\HealthyFoodCaloriesData.txt").ToArray();
+        healthyFoodTime = File.ReadAllLines("Assets\\Data Files\\HealthyFoodTimeData.txt").ToArray();
+    }
 }

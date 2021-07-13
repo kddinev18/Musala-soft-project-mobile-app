@@ -10,6 +10,7 @@ public class MainMenuButtons : MonoBehaviour
     [SerializeField] private Animator HealthyFood;
     [SerializeField] private GenerateExcercises generateExcercises;
     [SerializeField] private Button nextExerciseButton;
+
     public void openMenu()
     {
         menu.SetBool("isPressed", true);
@@ -59,7 +60,6 @@ public class MainMenuButtons : MonoBehaviour
     {
         HealthyFood.SetBool("isStarted",false);
     }
-
 
     IEnumerator wait()
     {
