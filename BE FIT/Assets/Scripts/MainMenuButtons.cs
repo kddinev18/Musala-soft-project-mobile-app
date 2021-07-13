@@ -7,6 +7,7 @@ public class MainMenuButtons : MonoBehaviour
 {
     [SerializeField] private Animator menu;
     [SerializeField] private Animator loseWeight;
+    [SerializeField] private Animator HealthyFood;
     [SerializeField] private GenerateExcercises generateExcercises;
     [SerializeField] private Button nextExerciseButton;
     public void openMenu()
@@ -48,6 +49,17 @@ public class MainMenuButtons : MonoBehaviour
         loseWeight.SetBool("goBack", true);
         loseWeight.SetBool("isTraining", false);
     }
+
+    public void openHealthyFoodTab()
+    {
+        HealthyFood.SetBool("isStarted",true);
+    }
+
+    public void closeHealthyFoodTab()
+    {
+        HealthyFood.SetBool("isStarted",false);
+    }
+
 
     IEnumerator wait()
     {
