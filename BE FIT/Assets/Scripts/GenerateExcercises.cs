@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GenerateExcercises : MonoBehaviour
 {   
-    [SerializeField] private ExcerciseHolder excerciseHolder;
+    [SerializeField] private DataHolder excerciseHolder;
     [SerializeField] private ExperienceSystem experienceSystem;
 
     [SerializeField] private Text excercisesNameDisplay;
