@@ -10,7 +10,6 @@ public class GenerateExcercises : MonoBehaviour
 
     [SerializeField] private Text excercisesNameDisplay;
     [SerializeField] private Text excercisesDescriptionDisplay;
-    [SerializeField] private Text timeDesplay;
 
     [SerializeField] private Animator loseWeightData;
     [SerializeField] private Button nextExerciseButton;
@@ -26,7 +25,7 @@ public class GenerateExcercises : MonoBehaviour
 
     public void nextExcercise()
     {
-        generateExcercise(excerciseHolder.excercises, excerciseHolder.description, excerciseHolder.count);
+        generateExcercise(excerciseHolder.excercises, excerciseHolder.description);
     }
     
     void Update()
@@ -41,16 +40,14 @@ public class GenerateExcercises : MonoBehaviour
             trainingsLeftWeekDisplay.text = trainingsLeftWeek.ToString();
             excercisesNameDisplay.text = "Congratulations";
             excercisesDescriptionDisplay.text = "Training Done";
-            timeDesplay.text = "";
         }
     }
 
-    private void generateExcercise(string[] excerciseName, string[] excerciseDesc, string[] excerciseCount)
+    private void generateExcercise(string[] excerciseName, string[] excerciseDesc)
     {
-        int randomindex = Random.Range(0, 3);
+        int randomindex = Random.Range(0, excerciseHolder.excercises.Length);
         excercisesNameDisplay.text = excerciseName[randomindex];
         excercisesDescriptionDisplay.text = excerciseDesc[randomindex];
-        timeDesplay.text = excerciseCount[randomindex];
         excerciseDone++;
     }
 }

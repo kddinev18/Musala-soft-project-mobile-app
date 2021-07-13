@@ -11,26 +11,40 @@ public class HealthyFoodButtons : MonoBehaviour
 
     [SerializeField] private Text Name;
     [SerializeField] private Text Desc;
-    [SerializeField] private Text Calories;
-    [SerializeField] private Text Time;
 
     private int index = 0;
+    public bool isStarted = false;
 
     void Start()
     {
         StartCoroutine(wait());
     }
 
+    void Update()
+    {
+        if (isStarted)
+        {
+            if (SwipeManager.swipeLeft)
+            {
+                pressPrev();
+            }
+            else if (SwipeManager.swipeRight)
+            {
+                pressNext();
+            }
+        }
+    }
+
     public void pressNext()
     {
         index++;
-        StartCoroutine(wait());
+        changeRecipe();
     }
 
     public void pressPrev()
     {
         index--;
-        StartCoroutine(wait());
+        changeRecipe();
     }
 
     private void changeRecipe()
@@ -45,15 +59,11 @@ public class HealthyFoodButtons : MonoBehaviour
         }
         Name.text = healthyFoodHolder.healthyFoodName[index];
         Desc.text = healthyFoodHolder.healthyFoodDesc[index];
-        Calories.text = healthyFoodHolder.healthyFoodCalories[index];
-        Time.text = healthyFoodHolder.healthyFoodTime[index];
     }
 
     IEnumerator wait()
     {
-        nextPrevRecipe.SetBool("newRecipe", true);
-        yield return new WaitForSeconds(.25f);
-        nextPrevRecipe.SetBool("newRecipe", false);
+        yield return new WaitForSeconds(.3f);
         changeRecipe();
     }
 }

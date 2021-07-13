@@ -11,6 +11,7 @@ public class MainMenuButtons : MonoBehaviour
     [SerializeField] private Animator fitnessSchedule;
     [SerializeField] private GenerateExcercises generateExcercises;
     [SerializeField] private Button nextExerciseButton;
+    [SerializeField] private HealthyFoodButtons healthyFoodButtons;
 
     public void openMenu()
     {
@@ -55,6 +56,7 @@ public class MainMenuButtons : MonoBehaviour
     public void openHealthyFoodTab()
     {
         healthyFood.SetBool("isStarted",true);
+        healthyFoodButtons.isStarted = true;
     }
 
     public void closeHealthyFoodTab()
