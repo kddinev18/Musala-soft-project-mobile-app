@@ -35,7 +35,7 @@ public class MainMenuButtons : MonoBehaviour
 
     public void startTraining()
     {
-        if (!(generateExcercises.trainingsLeft == 0 || generateExcercises.trainingsLeftWeek == 0))
+        if (!(generateExcercises.trainingsLeft == 0))
         {
             nextExerciseButton.interactable = true;
             loseWeight.SetBool("goBack", false);
@@ -77,9 +77,7 @@ public class MainMenuButtons : MonoBehaviour
     IEnumerator wait()
     {
         generateExcercises.trainingsLeftDisplay.color = Color.red;
-        generateExcercises.trainingsLeftWeekDisplay.color = Color.red;
         yield return new WaitForSeconds(1.05f);
-        generateExcercises.trainingsLeftWeekDisplay.color = Color.white;
         generateExcercises.trainingsLeftDisplay.color = Color.white;
     }
 }
