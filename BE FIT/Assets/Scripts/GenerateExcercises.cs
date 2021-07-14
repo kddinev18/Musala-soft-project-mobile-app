@@ -14,6 +14,7 @@ public class GenerateExcercises : MonoBehaviour
 
     [SerializeField] private Animator loseWeightData;
     [SerializeField] private Button nextExerciseButton;
+    [SerializeField] private NotificationManager notificationManager;
     public Text trainingsLeftDisplay;
     public int trainingsLeft = 4;
     public string leaveTime;
@@ -29,13 +30,24 @@ public class GenerateExcercises : MonoBehaviour
         trainingsLeft = userdata.trainingsLeftToday;
         trainingsLeftDisplay.text = trainingsLeft.ToString();
         leaveTime = userdata.leaveTime;
+        resetTrainings();
+    }
+
+    void resetTrainings()
+    {
         DateTime dateTime = DateTime.Parse(leaveTime);
         TimeSpan timeSpan = new TimeSpan(1, 0, 0, 0);
-        if (dateTime.Subtract(System.DateTime.UtcNow) >= timeSpan)
+        Debug.Log(dateTime + "     " + System.DateTime.UtcNow.Subtract(dateTime) + "     " + timeSpan);
+        if (System.DateTime.UtcNow.Subtract(dateTime) >= timeSpan)
         {
             trainingsLeft = 4;
+            trainingsLeftDisplay.text = trainingsLeft.ToString();
             leaveTime = System.DateTime.UtcNow.ToString();
             SaveSystem.saveUserData(this);
+        }
+        else
+        {
+
         }
     }
 
@@ -55,7 +67,9 @@ public class GenerateExcercises : MonoBehaviour
             excercisesNameDisplay.text = "Congratulations";
             excercisesDescriptionDisplay.text = "Training Done";
             leaveTime = DateTime.UtcNow.ToString();
+            Debug.Log(leaveTime);
             SaveSystem.saveUserData(this);
+            notificationManager.SendNotification();
         }
     }
 

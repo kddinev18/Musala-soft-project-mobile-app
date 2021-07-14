@@ -658,7 +658,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 196}
+  m_AnchoredPosition: {x: 0, y: 336.99994}
   m_SizeDelta: {x: 660, y: 195.4962}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &186567014
@@ -1089,7 +1089,7 @@ RectTransform:
   - {fileID: 2139993595}
   - {fileID: 1045039379}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1652,7 +1652,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -83.999985}
+  m_AnchoredPosition: {x: 0, y: 56.999954}
   m_SizeDelta: {x: 660, y: 195.4962}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &657809864
@@ -3823,7 +3823,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -364}
+  m_AnchoredPosition: {x: 0, y: -223}
   m_SizeDelta: {x: 660, y: 195.4962}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1521074705
@@ -4327,8 +4327,10 @@ MonoBehaviour:
   excercisesDescriptionDisplay: {fileID: 109370257}
   loseWeightData: {fileID: 2139993596}
   nextExerciseButton: {fileID: 1990425760}
+  notificationManager: {fileID: 1887834770}
   trainingsLeftDisplay: {fileID: 1599048639}
   trainingsLeft: 4
+  leaveTime: 
 --- !u!4 &1663616479
 Transform:
   m_ObjectHideFlags: 0
@@ -4844,7 +4846,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1852972256
 GameObject:
@@ -5211,7 +5213,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1919399390
 GameObject:

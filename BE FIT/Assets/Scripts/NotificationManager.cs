@@ -7,23 +7,24 @@ public class NotificationManager : MonoBehaviour
 {
     public void CreateNotificationChannel()
     {
-        var c = new AndroidNotificationChannel()
+        var dringWater = new AndroidNotificationChannel()
         {
-            Id = "channel_id",
+            Id = "dring water",
             Name = "Default Channel",
             Importance = Importance.High,
             Description = "Generic notifications",
         };
-        AndroidNotificationCenter.RegisterNotificationChannel(c);
+        AndroidNotificationCenter.RegisterNotificationChannel(dringWater);
     }
 
     public void SendNotification()
     {
         var notification = new AndroidNotification();
-        notification.Title = "SomeTitle";
-        notification.Text = "SomeText";
-        notification.FireTime = System.DateTime.Now.AddSeconds(5);
+        notification.Title = "Time for some water";
+        notification.Text = "After the training you must dring water."+'\n'+"Stay hydrated!";
+        notification.FireTime = System.DateTime.Now.AddMinutes(1);
 
-        AndroidNotificationCenter.SendNotification(notification, "channel_id");
+        AndroidNotificationCenter.SendNotification(notification, "dring water");
+        Debug.Log("1");
     }
 }
