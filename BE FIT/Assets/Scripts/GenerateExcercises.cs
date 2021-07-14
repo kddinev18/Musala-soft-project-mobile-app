@@ -23,6 +23,15 @@ public class GenerateExcercises : MonoBehaviour
     private bool isStarted = false;
     private int excerciseDone = 1;
 
+    void Start()
+    {
+        UserData userdata = SaveSystem.loadUserData();
+        trainingsLeft = userdata.trainingsLeftToday;
+        trainingsLeftWeek = userdata.trainingsLeftThisWeek;
+        trainingsLeftDisplay.text = trainingsLeft.ToString();
+        trainingsLeftWeekDisplay.text = trainingsLeftWeek.ToString();
+    }
+
     public void nextExcercise()
     {
         generateExcercise(excerciseHolder.excercises, excerciseHolder.description);
@@ -40,6 +49,7 @@ public class GenerateExcercises : MonoBehaviour
             trainingsLeftWeekDisplay.text = trainingsLeftWeek.ToString();
             excercisesNameDisplay.text = "Congratulations";
             excercisesDescriptionDisplay.text = "Training Done";
+            SaveSystem.saveUserData(this);
         }
     }
 
