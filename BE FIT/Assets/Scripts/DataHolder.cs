@@ -9,49 +9,62 @@ using System.Linq;
 public class DataHolder : MonoBehaviour
 {
     public string[] excercises;
-    public string[] descriptionContainer;
     public string[] description;
     public string[] calories;
     public string[] healthyFoodName;
     public string[] healthyFoodDesc;
-    public string[] healthyFoodDescConatiner;
 
-    [SerializeField] private NotificationManager notificationManager;
+    [SerializeField] private TextAsset excerciseNameData;
+    [SerializeField] private TextAsset excerciseDescriptionData;
+    [SerializeField] private TextAsset excerciseCaloriesData;
+    [SerializeField] private TextAsset healthyFoodNameData;
+    [SerializeField] private TextAsset healthyFoodDescData;
 
     void Start()
     {
-        try
-        {
-            excercises = File.ReadAllLines("Assets\\Data Files\\ExcerciseNameData.txt").ToArray();
-            descriptionContainer = File.ReadAllLines("Assets\\Data Files\\ExcerciseDescriptionData.txt").ToArray();
-            calories = File.ReadAllLines("Assets\\Data Files\\ExcerciseCaloriesData.txt").ToArray();
+        excercises = new string[countWords(excerciseNameData.text)];
+        excercises = separate(excerciseNameData.text, excercises);
 
-            healthyFoodName = File.ReadAllLines("Assets\\Data Files\\HealthyFoodNameData.txt").ToArray();
-            healthyFoodDescConatiner = File.ReadAllLines("Assets\\Data Files\\HealthyFoodDescData.txt").ToArray();
-        }
-        catch(Exception e)
-        {
-            notificationManager.createErrorNotificationChannel();
-            notificationManager.SendErrorNotification(e.Message);
-        }
+        description = new string[countWords(excerciseDescriptionData.text)];
+        description = separate(excerciseDescriptionData.text, description);
 
-        description = new string [descriptionContainer.Length];
-        for (int i = 0; i < descriptionContainer.Length; i++)
-        {
-            description[i] = separate(descriptionContainer[i]);
-        }
+        calories = new string[countWords(excerciseCaloriesData.text)];
+        calories = separate(excerciseCaloriesData.text, calories);
 
-        healthyFoodDesc = new string[healthyFoodDescConatiner.Length];
-        for (int i = 0 ; i < healthyFoodDescConatiner.Length; i++)
-        {
-            healthyFoodDesc[i] = separate(healthyFoodDescConatiner[i]);
-        }
+        healthyFoodName = new string[countWords(healthyFoodNameData.text)];
+        healthyFoodName = separate(healthyFoodNameData.text, healthyFoodName);
+
+        healthyFoodDesc = new string[countWords(healthyFoodDescData.text)];
+        healthyFoodDesc = separate(healthyFoodDescData.text, healthyFoodDesc);
     }
 
-    string separate(string desc , char replaceWith = '\n', char replaceWhat = ',')
+    int countWords(string text)
     {
-        desc = desc.Replace(replaceWhat, replaceWith);
+        int count = 1;
+        for(int i=0;i<text.Length;i++)
+        {
+            if(text[i] == ',')
+            {
+                count++;
+            }
+        }
+        return count;
+    }
 
-        return desc;
+    string[] separate(string text, string[] arg)
+    {
+        int argCount = 0;
+        for(int i=0;i<text.Length;i++)
+        {
+            if(text[i] == ',')
+            {
+                argCount++;
+            }
+            else
+            {
+                arg[argCount] += text[i];
+            }
+        }
+        return arg;
     }
 }

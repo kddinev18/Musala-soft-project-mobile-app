@@ -3233,13 +3233,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   excercises: []
-  descriptionContainer: []
   description: []
   calories: []
   healthyFoodName: []
   healthyFoodDesc: []
-  healthyFoodDescConatiner: []
-  notificationManager: {fileID: 0}
+  excerciseNameData: {fileID: 4900000, guid: 903ebc827aeb1324aba351093708fa63, type: 3}
+  excerciseDescriptionData: {fileID: 4900000, guid: da43d3b89e33bec46a888e24e7d73687, type: 3}
+  excerciseCaloriesData: {fileID: 4900000, guid: 355644649f5b07b4f97010f14e8b96f2, type: 3}
+  healthyFoodNameData: {fileID: 4900000, guid: ea904273a469f374f84a8224b5ab81cc, type: 3}
+  healthyFoodDescData: {fileID: 4900000, guid: e26cc5dc14651974fb3f2c3d5dd1d7ec, type: 3}
 --- !u!4 &1065478392
 Transform:
   m_ObjectHideFlags: 0
