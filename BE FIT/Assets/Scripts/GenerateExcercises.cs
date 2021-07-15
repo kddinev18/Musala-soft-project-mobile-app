@@ -79,12 +79,12 @@ public class GenerateExcercises : MonoBehaviour
     {
         yield return new WaitForSeconds(.2f);
         UserData userdata = SaveSystem.loadUserData();
-        trainingsLeft = userdata.trainingsLeftToday;
-        trainingsLeftDisplay.text = trainingsLeft.ToString();
+        //trainingsLeft = userdata.trainingsLeftToday;
+        //trainingsLeftDisplay.text = trainingsLeft.ToString();
         leaveTime = userdata.leaveTime;
-        trainingsDone = userdata.trainingsDone;
-        displayStats.fatBurntCount = userdata.fatBurntCount;
-        experienceSystem.levelNumber = userdata.level;
+        //trainingsDone = userdata.trainingsDone;
+        //displayStats.fatBurntCount = userdata.fatBurntCount;
+        //experienceSystem.levelNumber = userdata.level;
 
         resetTrainings();
     }
