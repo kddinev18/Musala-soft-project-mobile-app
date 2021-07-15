@@ -36,11 +36,12 @@ public class MainMenuButtons : MonoBehaviour
 
     public void BackToLoseWeightMenu()
     {
-        if(!generateExcercises.isTrainingDone)
+        if(generateExcercises.isTrainingDone)
         {
             generateExcercises.trainingsLeft--;
             generateExcercises.trainingsLeftDisplay.text = generateExcercises.trainingsLeft.ToString();
             SaveSystem.saveUserData(generateExcercises);
+            generateExcercises.isTrainingDone = false;
         }
         loseWeight.SetBool("goBack", true);
         loseWeight.SetBool("isTraining", false);

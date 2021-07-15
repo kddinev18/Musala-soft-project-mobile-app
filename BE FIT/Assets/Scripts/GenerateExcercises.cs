@@ -45,7 +45,7 @@ public class GenerateExcercises : MonoBehaviour
     {
         if (!(trainingsLeft == 0))
         {
-            isTrainingDone = false;
+            isTrainingDone = true;
             nextExerciseButton.interactable = true;
             loseWeight.SetBool("goBack", false);
             loseWeight.SetBool("isTraining", true);
@@ -70,7 +70,7 @@ public class GenerateExcercises : MonoBehaviour
             trainingsLeftDisplay.text = trainingsLeft.ToString();
             excercisesNameDisplay.text = "Training Done";
             spriteRenderer.enabled = false;
-            isTrainingDone = true;
+            isTrainingDone = false;
             StartCoroutine(waitSave());
             notificationManager.createNotificationChannel();
             notificationManager.SendNotification();
@@ -92,6 +92,15 @@ public class GenerateExcercises : MonoBehaviour
             Int32.TryParse(calories[randomindex], out int fatBurntCointainer);
             displayStats.fatBurntCount += fatBurntCointainer;
             excerciseDone++;
+        }
+    }
+
+    void OnApplicationQuit()
+    {
+        if(isTrainingDone)
+        {
+            trainingsLeft--;
+            SaveSystem.saveUserData(this);
         }
     }
 
