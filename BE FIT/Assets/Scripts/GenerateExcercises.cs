@@ -33,7 +33,6 @@ public class GenerateExcercises : MonoBehaviour
     {
         DateTime dateTime = DateTime.Parse(leaveTime);
         TimeSpan timeSpan = new TimeSpan(1, 0, 0, 0);
-        Debug.Log(dateTime + "     " + System.DateTime.UtcNow.Subtract(dateTime) + "     " + timeSpan);
         if (System.DateTime.UtcNow.Subtract(dateTime) >= timeSpan)
         {
             trainingsLeft = 4;
@@ -79,12 +78,12 @@ public class GenerateExcercises : MonoBehaviour
     {
         yield return new WaitForSeconds(.2f);
         UserData userdata = SaveSystem.loadUserData();
-        //trainingsLeft = userdata.trainingsLeftToday;
-        //trainingsLeftDisplay.text = trainingsLeft.ToString();
+        trainingsLeft = userdata.trainingsLeftToday;
+        trainingsLeftDisplay.text = trainingsLeft.ToString();
         leaveTime = userdata.leaveTime;
-        //trainingsDone = userdata.trainingsDone;
-        //displayStats.fatBurntCount = userdata.fatBurntCount;
-        //experienceSystem.levelNumber = userdata.level;
+        trainingsDone = userdata.trainingsDone;
+        displayStats.fatBurntCount = userdata.fatBurntCount;
+        experienceSystem.levelNumber = userdata.level;
 
         resetTrainings();
     }
@@ -92,7 +91,6 @@ public class GenerateExcercises : MonoBehaviour
     IEnumerator waitSave()
     {
         leaveTime = DateTime.UtcNow.ToString();
-        Debug.Log(leaveTime);
         experienceSystem.levelCapacity += 100;
         trainingsDone++;
         yield return new WaitForSeconds(.5f);

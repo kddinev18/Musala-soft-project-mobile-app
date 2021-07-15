@@ -37,7 +37,6 @@ public class NotificationManager : MonoBehaviour
         notification.FireTime = System.DateTime.Now;
 
         AndroidNotificationCenter.SendNotification(notification, "dring water");
-        Debug.Log("1");
     }
 
     public void SendErrorNotification(string errorCode)
@@ -48,6 +47,5 @@ public class NotificationManager : MonoBehaviour
         notification.FireTime = System.DateTime.Now;
 
         AndroidNotificationCenter.SendNotification(notification, "error");
-        Debug.Log("2");
     }
 }
