@@ -61,6 +61,7 @@ public class GenerateExcercises : MonoBehaviour
             excercisesNameDisplay.text = "Congratulations";
             excercisesDescriptionDisplay.text = "Training Done";
             StartCoroutine(waitSave());
+            notificationManager.createNotificationChannel();
             notificationManager.SendNotification();
         }
     }

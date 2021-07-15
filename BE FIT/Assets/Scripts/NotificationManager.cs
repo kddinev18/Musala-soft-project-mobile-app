@@ -5,7 +5,7 @@ using Unity.Notifications.Android;
 
 public class NotificationManager : MonoBehaviour
 {
-    public void CreateNotificationChannel()
+    public void createNotificationChannel()
     {
         var dringWater = new AndroidNotificationChannel()
         {
@@ -17,14 +17,37 @@ public class NotificationManager : MonoBehaviour
         AndroidNotificationCenter.RegisterNotificationChannel(dringWater);
     }
 
+    public void createErrorNotificationChannel()
+    {
+        var error = new AndroidNotificationChannel()
+        {
+            Id = "error",
+            Name = "Default Channel",
+            Importance = Importance.High,
+            Description = "Generic notifications",
+        };
+        AndroidNotificationCenter.RegisterNotificationChannel(error);
+    }
+
     public void SendNotification()
     {
         var notification = new AndroidNotification();
         notification.Title = "Time for some water";
         notification.Text = "After the training you must dring water."+'\n'+"Stay hydrated!";
-        notification.FireTime = System.DateTime.Now.AddMinutes(1);
+        notification.FireTime = System.DateTime.Now;
 
         AndroidNotificationCenter.SendNotification(notification, "dring water");
         Debug.Log("1");
+    }
+
+    public void SendErrorNotification(string errorCode)
+    {
+        var notification = new AndroidNotification();
+        notification.Title = "Fatal Error!";
+        notification.Text = errorCode + '\n' + "Try reinstalling the app.";
+        notification.FireTime = System.DateTime.Now;
+
+        AndroidNotificationCenter.SendNotification(notification, "error");
+        Debug.Log("2");
     }
 }
