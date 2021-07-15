@@ -23,6 +23,7 @@ public class GenerateExcercises : MonoBehaviour
     public int trainingsDone = 0;
 
     private int excerciseDone = 1;
+    private int prevRandom = -1;
 
     void Start()
     {
@@ -67,11 +68,19 @@ public class GenerateExcercises : MonoBehaviour
     private void generateExcercise(string[] excerciseName, string[] excerciseDesc, string[] calories)
     {
         int randomindex = UnityEngine.Random.Range(0, excerciseHolder.excercises.Length);
-        excercisesNameDisplay.text = excerciseName[randomindex];
-        excercisesDescriptionDisplay.text = excerciseDesc[randomindex];
-        Int32.TryParse(calories[randomindex], out int fatBurntCointainer);
-        displayStats.fatBurntCount += fatBurntCointainer;
-        excerciseDone++;
+        if (prevRandom == randomindex)
+        {
+            generateExcercise(excerciseName, excerciseDesc, calories);
+        }
+        else
+        {
+            prevRandom = randomindex;
+            excercisesNameDisplay.text = excerciseName[randomindex];
+            excercisesDescriptionDisplay.text = excerciseDesc[randomindex];
+            Int32.TryParse(calories[randomindex], out int fatBurntCointainer);
+            displayStats.fatBurntCount += fatBurntCointainer;
+            excerciseDone++;
+        }
     }
 
     IEnumerator wait()
@@ -79,6 +88,7 @@ public class GenerateExcercises : MonoBehaviour
         yield return new WaitForSeconds(.2f);
         UserData userdata = SaveSystem.loadUserData();
         trainingsLeft = userdata.trainingsLeftToday;
+        trainingsLeft = 4;
         trainingsLeftDisplay.text = trainingsLeft.ToString();
         leaveTime = userdata.leaveTime;
         trainingsDone = userdata.trainingsDone;
@@ -94,6 +104,10 @@ public class GenerateExcercises : MonoBehaviour
         experienceSystem.levelCapacity += 100;
         trainingsDone++;
         yield return new WaitForSeconds(.5f);
+        trainingsDone = 0;
+        trainingsLeft = 4;
+        experienceSystem.levelNumber = 0;
+        displayStats.fatBurntCount = 0;
         SaveSystem.saveUserData(this);
     }
 }
