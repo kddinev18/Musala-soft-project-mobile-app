@@ -6,7 +6,7 @@ public static class SaveSystem
     public static void saveUserData(GenerateExcercises generateExcercises)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = "Assets\\Save Files\\SaveFile.sf";
+        string path = Application.persistentDataPath + "SaveFile.befit";
         FileStream stream = new FileStream(path, FileMode.Create);
 
         UserData userData = new UserData(generateExcercises);
@@ -17,8 +17,8 @@ public static class SaveSystem
 
     public static UserData loadUserData()
     {
-        string path = "Assets\\Save Files\\SaveFile.sf";
-        if(File.Exists(path))
+        string path = Application.persistentDataPath + "SaveFile.befit";
+        if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
