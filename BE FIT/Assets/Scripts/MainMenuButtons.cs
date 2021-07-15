@@ -8,10 +8,11 @@ public class MainMenuButtons : MonoBehaviour
     [SerializeField] private Animator menu;
     [SerializeField] private Animator loseWeight;
     [SerializeField] private Animator healthyFood;
-    [SerializeField] private Animator fitnessSchedule;
+    [SerializeField] private Animator stats;
     [SerializeField] private GenerateExcercises generateExcercises;
     [SerializeField] private Button nextExerciseButton;
     [SerializeField] private HealthyFoodButtons healthyFoodButtons;
+    private bool pressedBefore = false;
 
     public void openMenu()
     {
@@ -64,14 +65,19 @@ public class MainMenuButtons : MonoBehaviour
         healthyFood.SetBool("isStarted",false);
     }
 
-    public void openFitnessSchedule()
+    public void openCloseStats()
     {
-        fitnessSchedule.SetBool("isStarted", true);
-    }
+        if(!pressedBefore)
+        {
+            stats.SetBool("isStarted", true);
+            pressedBefore = true;
+        }
+        else
+        {
+            stats.SetBool("isStarted", false);
+            pressedBefore = false;
+        }
 
-    public void closeFitnessSchedule()
-    {
-        fitnessSchedule.SetBool("isStarted", false);
     }
 
     IEnumerator wait()

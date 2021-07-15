@@ -1187,10 +1187,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6dd99f15b67d9b4cae612e8a53d8c18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menu: {fileID: 1150477943}
+  menu: {fileID: 2107438558}
   loseWeight: {fileID: 2139993596}
   healthyFood: {fileID: 1045039380}
-  fitnessSchedule: {fileID: 0}
+  stats: {fileID: 2055884203}
   generateExcercises: {fileID: 1663616478}
   nextExerciseButton: {fileID: 1990425760}
   healthyFoodButtons: {fileID: 1045039381}
@@ -3345,8 +3345,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1150477941}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 239.99998, y: -586.6401, z: 0}
-  m_LocalScale: {x: 0.6000001, y: 0.6000001, z: 0.6000001}
+  m_LocalPosition: {x: -0.000025431313, y: 0.00036621094, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1919399391}
   - {fileID: 1780802818}
@@ -4413,7 +4413,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1521074706}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 348871752}
+        m_TargetAssemblyTypeName: MainMenuButtons, Assembly-CSharp
+        m_MethodName: openCloseStats
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1521074706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6553,8 +6565,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2055884201}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 239.99998, y: -586.6401, z: 0}
-  m_LocalScale: {x: 0.6000001, y: 0.6000001, z: 0.6000001}
+  m_LocalPosition: {x: -0.000025431313, y: 0.00036621094, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1610576470}
   m_Father: {fileID: 2107438557}
@@ -6607,14 +6619,14 @@ RectTransform:
   m_GameObject: {fileID: 2095658739}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6000001, y: 0.6000001, z: 0.6000001}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2107438557}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 239.99997, y: -586.6404}
+  m_AnchoredPosition: {x: 0.00012207031, y: -0.00048828125}
   m_SizeDelta: {x: 1644.4438, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2095658741
@@ -6683,6 +6695,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2107438557}
+  - component: {fileID: 2107438558}
   m_Layer: 0
   m_Name: MainMenu
   m_TagString: Untagged
@@ -6697,9 +6710,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2107438556}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -399.99997, y: -666.6666, z: 0}
-  m_LocalScale: {x: 1.6666665, y: 1.6666665, z: 1.6666665}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1644.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2095658740}
   - {fileID: 2055884202}
@@ -6707,6 +6720,25 @@ Transform:
   m_Father: {fileID: 348871751}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2107438558
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107438556}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 65f10606633988f4e97df0a8f60d07b7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2139993594
 GameObject:
   m_ObjectHideFlags: 0
