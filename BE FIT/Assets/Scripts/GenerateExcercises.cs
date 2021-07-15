@@ -10,6 +10,7 @@ public class GenerateExcercises : MonoBehaviour
     public ExperienceSystem experienceSystem;
     public DisplayStats displayStats;
     [SerializeField] private Text excercisesNameDisplay;
+    [SerializeField] private Text excercisesCountDisplay;
     [SerializeField] private Animator loseWeight;
     [SerializeField] private Button nextExerciseButton;
     [SerializeField] private NotificationManager notificationManager;
@@ -56,7 +57,7 @@ public class GenerateExcercises : MonoBehaviour
     {
 
          spriteRenderer.enabled = true;
-         generateExcercise(excerciseHolder.excercises, excerciseHolder.calories);
+         generateExcercise(excerciseHolder.excercises, excerciseHolder.calories, excerciseHolder.count);
          experienceSystem.levelCapacity += 50;
     }
     
@@ -69,6 +70,7 @@ public class GenerateExcercises : MonoBehaviour
             excerciseDone = 1;
             trainingsLeftDisplay.text = trainingsLeft.ToString();
             excercisesNameDisplay.text = "Training Done";
+            excercisesCountDisplay.text = "";
             spriteRenderer.enabled = false;
             isTrainingDone = false;
             StartCoroutine(waitSave());
@@ -77,18 +79,19 @@ public class GenerateExcercises : MonoBehaviour
         }
     }
 
-    private void generateExcercise(string[] excerciseName, string[] calories)
+    private void generateExcercise(string[] excerciseName, string[] calories, string[] count)
     {
         int randomindex = UnityEngine.Random.Range(0, excerciseHolder.excercises.Length);
         if (prevRandom == randomindex)
         {
-            generateExcercise(excerciseName, calories);
+            generateExcercise(excerciseName, calories, count);
         }
         else
         {
             spriteRenderer.sprite = exerciseSprites[randomindex];
             prevRandom = randomindex;
             excercisesNameDisplay.text = excerciseName[randomindex];
+            excercisesCountDisplay.text = count[randomindex];
             Int32.TryParse(calories[randomindex], out int fatBurntCointainer);
             displayStats.fatBurntCount += fatBurntCointainer;
             excerciseDone++;
@@ -114,6 +117,7 @@ public class GenerateExcercises : MonoBehaviour
         trainingsDone = userdata.trainingsDone;
         displayStats.fatBurntCount = userdata.fatBurntCount;
         experienceSystem.levelNumber = userdata.level;
+        experienceSystem.levelCapacity = userdata.levelCapacity;
         resetTrainings();
     }
 

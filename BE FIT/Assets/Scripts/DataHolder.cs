@@ -10,27 +10,42 @@ public class DataHolder : MonoBehaviour
 {
     public string[] excercises;
     public string[] calories;
+    public string[] count;
     public string[] healthyFoodName;
     public string[] healthyFoodDesc;
 
     [SerializeField] private TextAsset excerciseNameData;
+    [SerializeField] private TextAsset excerciseCountData;
     [SerializeField] private TextAsset excerciseCaloriesData;
     [SerializeField] private TextAsset healthyFoodNameData;
     [SerializeField] private TextAsset healthyFoodDescData;
 
+    [SerializeField] private NotificationManager notificationManager;
+
     void Start()
     {
-        excercises = new string[countWords(excerciseNameData.text)];
-        excercises = separate(excerciseNameData.text, excercises);
+        try
+        {
+            excercises = new string[countWords(excerciseNameData.text)];
+            excercises = separate(excerciseNameData.text, excercises);
 
-        calories = new string[countWords(excerciseCaloriesData.text)];
-        calories = separate(excerciseCaloriesData.text, calories);
+            calories = new string[countWords(excerciseCaloriesData.text)];
+            calories = separate(excerciseCaloriesData.text, calories);
 
-        healthyFoodName = new string[countWords(healthyFoodNameData.text)];
-        healthyFoodName = separate(healthyFoodNameData.text, healthyFoodName);
+            count = new string[countWords(excerciseCountData.text)];
+            count = separate(excerciseCountData.text, count);
 
-        healthyFoodDesc = new string[countWords(healthyFoodDescData.text)];
-        healthyFoodDesc = separate(healthyFoodDescData.text, healthyFoodDesc);
+            healthyFoodName = new string[countWords(healthyFoodNameData.text)];
+            healthyFoodName = separate(healthyFoodNameData.text, healthyFoodName);
+
+            healthyFoodDesc = new string[countWords(healthyFoodDescData.text)];
+            healthyFoodDesc = separate(healthyFoodDescData.text, healthyFoodDesc);
+        }
+        catch(Exception e)
+        {
+            notificationManager.createErrorNotificationChannel();
+            notificationManager.SendErrorNotification(e.Message);
+        }
     }
 
     int countWords(string text)

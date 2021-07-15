@@ -2127,14 +2127,14 @@ RectTransform:
   m_GameObject: {fileID: 723635122}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 2139993595}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 800, y: -18}
+  m_AnchoredPosition: {x: 800, y: 66}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &723635124
@@ -3216,12 +3216,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   excercises: []
   calories: []
+  count: []
   healthyFoodName: []
   healthyFoodDesc: []
   excerciseNameData: {fileID: 4900000, guid: 903ebc827aeb1324aba351093708fa63, type: 3}
+  excerciseCountData: {fileID: 4900000, guid: f39c217ea8965d74fbcf860e8174133f, type: 3}
   excerciseCaloriesData: {fileID: 4900000, guid: 355644649f5b07b4f97010f14e8b96f2, type: 3}
   healthyFoodNameData: {fileID: 4900000, guid: ea904273a469f374f84a8224b5ab81cc, type: 3}
   healthyFoodDescData: {fileID: 4900000, guid: e26cc5dc14651974fb3f2c3d5dd1d7ec, type: 3}
+  notificationManager: {fileID: 1887834770}
 --- !u!4 &1065478392
 Transform:
   m_ObjectHideFlags: 0
@@ -5319,6 +5322,7 @@ MonoBehaviour:
   experienceSystem: {fileID: 1339098838}
   displayStats: {fileID: 582683334}
   excercisesNameDisplay: {fileID: 1101860828}
+  excercisesCountDisplay: {fileID: 2066357616}
   loseWeight: {fileID: 2139993596}
   nextExerciseButton: {fileID: 1990425760}
   notificationManager: {fileID: 1887834770}
@@ -5334,6 +5338,7 @@ MonoBehaviour:
   trainingsLeft: 4
   leaveTime: 
   trainingsDone: 0
+  isTrainingDone: 0
 --- !u!4 &1663616479
 Transform:
   m_ObjectHideFlags: 0
@@ -6715,6 +6720,85 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &2066357614
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2066357615}
+  - component: {fileID: 2066357617}
+  - component: {fileID: 2066357616}
+  m_Layer: 5
+  m_Name: count
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2066357615
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066357614}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2139993595}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 800, y: -321.2123}
+  m_SizeDelta: {x: 597.87, y: 149.5754}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2066357616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066357614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 720e25ded1a1a1b47bfa70f20839d720, type: 3}
+    m_FontSize: 101
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 101
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 0
+--- !u!222 &2066357617
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066357614}
+  m_CullTransparentMesh: 1
 --- !u!1 &2095658739
 GameObject:
   m_ObjectHideFlags: 0
@@ -6901,6 +6985,7 @@ Transform:
   - {fileID: 1854114905}
   - {fileID: 1990425759}
   - {fileID: 723635123}
+  - {fileID: 2066357615}
   m_Father: {fileID: 348871751}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -9,6 +9,7 @@ public class UserData
     public int fatBurntCount;
     public int trainingsDone;
     public int level;
+    public int levelCapacity;
     public UserData(GenerateExcercises generateExcercises)
     {
         trainingsLeftToday = generateExcercises.trainingsLeft;
@@ -16,5 +17,6 @@ public class UserData
         fatBurntCount = generateExcercises.displayStats.fatBurntCount;
         trainingsDone = generateExcercises.trainingsDone;
         level = generateExcercises.experienceSystem.levelNumber;
+        levelCapacity = generateExcercises.experienceSystem.levelCapacity;
     }
 }
