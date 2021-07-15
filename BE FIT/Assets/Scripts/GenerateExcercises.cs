@@ -7,7 +7,8 @@ using System;
 public class GenerateExcercises : MonoBehaviour
 {   
     [SerializeField] private DataHolder excerciseHolder;
-    [SerializeField] private ExperienceSystem experienceSystem;
+    public ExperienceSystem experienceSystem;
+    public DisplayStats displayStats;
 
     [SerializeField] private Text excercisesNameDisplay;
     [SerializeField] private Text excercisesDescriptionDisplay;
@@ -19,18 +20,14 @@ public class GenerateExcercises : MonoBehaviour
     public int trainingsLeft = 4;
     public string leaveTime;
 
-
+    public int trainingsDone = 0;
 
     private bool isStarted = false;
     private int excerciseDone = 1;
 
     void Start()
     {
-        UserData userdata = SaveSystem.loadUserData();
-        trainingsLeft = userdata.trainingsLeftToday;
-        trainingsLeftDisplay.text = trainingsLeft.ToString();
-        leaveTime = userdata.leaveTime;
-        resetTrainings();
+        StartCoroutine(wait());
     }
 
     void resetTrainings()
@@ -45,15 +42,12 @@ public class GenerateExcercises : MonoBehaviour
             leaveTime = System.DateTime.UtcNow.ToString();
             SaveSystem.saveUserData(this);
         }
-        else
-        {
-
-        }
     }
 
     public void nextExcercise()
     {
-        generateExcercise(excerciseHolder.excercises, excerciseHolder.description);
+        generateExcercise(excerciseHolder.excercises, excerciseHolder.description, excerciseHolder.calories);
+        experienceSystem.levelCapacity += 50;
     }
     
     void Update()
@@ -66,18 +60,43 @@ public class GenerateExcercises : MonoBehaviour
             trainingsLeftDisplay.text = trainingsLeft.ToString();
             excercisesNameDisplay.text = "Congratulations";
             excercisesDescriptionDisplay.text = "Training Done";
-            leaveTime = DateTime.UtcNow.ToString();
-            Debug.Log(leaveTime);
-            SaveSystem.saveUserData(this);
+            StartCoroutine(waitSave());
             notificationManager.SendNotification();
         }
     }
 
-    private void generateExcercise(string[] excerciseName, string[] excerciseDesc)
+    private void generateExcercise(string[] excerciseName, string[] excerciseDesc, string[] calories)
     {
         int randomindex = UnityEngine.Random.Range(0, excerciseHolder.excercises.Length);
         excercisesNameDisplay.text = excerciseName[randomindex];
         excercisesDescriptionDisplay.text = excerciseDesc[randomindex];
+        int fatBurntCointainer;
+        Int32.TryParse(calories[randomindex], out int cointainer);
+        displayStats.fatBurntCount += cointainer;
         excerciseDone++;
+    }
+
+    IEnumerator wait()
+    {
+        yield return new WaitForSeconds(.2f);
+        UserData userdata = SaveSystem.loadUserData();
+        trainingsLeft = userdata.trainingsLeftToday;
+        trainingsLeftDisplay.text = trainingsLeft.ToString();
+        leaveTime = userdata.leaveTime;
+        trainingsDone = userdata.trainingsDone;
+        displayStats.fatBurntCount = userdata.fatBurntCount;
+        experienceSystem.levelNumber = userdata.level;
+
+        resetTrainings();
+    }
+
+    IEnumerator waitSave()
+    {
+        leaveTime = DateTime.UtcNow.ToString();
+        Debug.Log(leaveTime);
+        experienceSystem.levelCapacity += 100;
+        trainingsDone++;
+        yield return new WaitForSeconds(.5f);
+        SaveSystem.saveUserData(this);
     }
 }

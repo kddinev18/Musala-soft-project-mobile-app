@@ -13,6 +13,7 @@ public class DataHolder : MonoBehaviour
     public string[] calories;
     public string[] healthyFoodName;
     public string[] healthyFoodDesc;
+    public string[] healthyFoodDescConatiner;
 
     void Start()
     {
@@ -21,6 +22,18 @@ public class DataHolder : MonoBehaviour
         calories = File.ReadAllLines("Assets\\Data Files\\ExcerciseCaloriesData.txt").ToArray();
 
         healthyFoodName = File.ReadAllLines("Assets\\Data Files\\HealthyFoodNameData.txt").ToArray();
-        healthyFoodDesc = File.ReadAllLines("Assets\\Data Files\\HealthyFoodDescData.txt").ToArray();
+        healthyFoodDescConatiner = File.ReadAllLines("Assets\\Data Files\\HealthyFoodDescData.txt").ToArray();
+        healthyFoodDesc = new string[healthyFoodDescConatiner.Length];
+        for (int i = 0 ; i < healthyFoodDescConatiner.Length; i++)
+        {
+            healthyFoodDesc[i] = separate(healthyFoodDescConatiner[i]);
+        }
+    }
+
+    string separate(string desc , char replaceWith = '\n', char replaceWhat = ',')
+    {
+        desc = desc.Replace(replaceWhat, replaceWith);
+
+        return desc;
     }
 }
