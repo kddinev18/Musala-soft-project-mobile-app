@@ -9,13 +9,11 @@ using System.Linq;
 public class DataHolder : MonoBehaviour
 {
     public string[] excercises;
-    public string[] description;
     public string[] calories;
     public string[] healthyFoodName;
     public string[] healthyFoodDesc;
 
     [SerializeField] private TextAsset excerciseNameData;
-    [SerializeField] private TextAsset excerciseDescriptionData;
     [SerializeField] private TextAsset excerciseCaloriesData;
     [SerializeField] private TextAsset healthyFoodNameData;
     [SerializeField] private TextAsset healthyFoodDescData;
@@ -24,9 +22,6 @@ public class DataHolder : MonoBehaviour
     {
         excercises = new string[countWords(excerciseNameData.text)];
         excercises = separate(excerciseNameData.text, excercises);
-
-        description = new string[countWords(excerciseDescriptionData.text)];
-        description = separate(excerciseDescriptionData.text, description);
 
         calories = new string[countWords(excerciseCaloriesData.text)];
         calories = separate(excerciseCaloriesData.text, calories);

@@ -9,19 +9,17 @@ public class GenerateExcercises : MonoBehaviour
     [SerializeField] private DataHolder excerciseHolder;
     public ExperienceSystem experienceSystem;
     public DisplayStats displayStats;
-
     [SerializeField] private Text excercisesNameDisplay;
-    [SerializeField] private Text excercisesDescriptionDisplay;
-
-    [SerializeField] private Animator loseWeightData;
+    [SerializeField] private Animator loseWeight;
     [SerializeField] private Button nextExerciseButton;
     [SerializeField] private NotificationManager notificationManager;
+    [SerializeField] private Sprite []exerciseSprites;
+    [SerializeField] private Image spriteRenderer;
     public Text trainingsLeftDisplay;
     public int trainingsLeft = 4;
     public string leaveTime;
-
     public int trainingsDone = 0;
-
+    public bool isTrainingDone = false;
     private int excerciseDone = 1;
     private int prevRandom = -1;
 
@@ -43,10 +41,23 @@ public class GenerateExcercises : MonoBehaviour
         }
     }
 
+    public void startTraining()
+    {
+        if (!(trainingsLeft == 0))
+        {
+            isTrainingDone = false;
+            nextExerciseButton.interactable = true;
+            loseWeight.SetBool("goBack", false);
+            loseWeight.SetBool("isTraining", true);
+            nextExcercise();
+        }
+    }
     public void nextExcercise()
     {
-        generateExcercise(excerciseHolder.excercises, excerciseHolder.description, excerciseHolder.calories);
-        experienceSystem.levelCapacity += 50;
+
+         spriteRenderer.enabled = true;
+         generateExcercise(excerciseHolder.excercises, excerciseHolder.calories);
+         experienceSystem.levelCapacity += 50;
     }
     
     void Update()
@@ -57,26 +68,27 @@ public class GenerateExcercises : MonoBehaviour
             trainingsLeft--;
             excerciseDone = 1;
             trainingsLeftDisplay.text = trainingsLeft.ToString();
-            excercisesNameDisplay.text = "Congratulations";
-            excercisesDescriptionDisplay.text = "Training Done";
+            excercisesNameDisplay.text = "Training Done";
+            spriteRenderer.enabled = false;
+            isTrainingDone = true;
             StartCoroutine(waitSave());
             notificationManager.createNotificationChannel();
             notificationManager.SendNotification();
         }
     }
 
-    private void generateExcercise(string[] excerciseName, string[] excerciseDesc, string[] calories)
+    private void generateExcercise(string[] excerciseName, string[] calories)
     {
         int randomindex = UnityEngine.Random.Range(0, excerciseHolder.excercises.Length);
         if (prevRandom == randomindex)
         {
-            generateExcercise(excerciseName, excerciseDesc, calories);
+            generateExcercise(excerciseName, calories);
         }
         else
         {
+            spriteRenderer.sprite = exerciseSprites[randomindex];
             prevRandom = randomindex;
             excercisesNameDisplay.text = excerciseName[randomindex];
-            excercisesDescriptionDisplay.text = excerciseDesc[randomindex];
             Int32.TryParse(calories[randomindex], out int fatBurntCointainer);
             displayStats.fatBurntCount += fatBurntCointainer;
             excerciseDone++;
@@ -88,13 +100,11 @@ public class GenerateExcercises : MonoBehaviour
         yield return new WaitForSeconds(.2f);
         UserData userdata = SaveSystem.loadUserData();
         trainingsLeft = userdata.trainingsLeftToday;
-        trainingsLeft = 4;
         trainingsLeftDisplay.text = trainingsLeft.ToString();
         leaveTime = userdata.leaveTime;
         trainingsDone = userdata.trainingsDone;
         displayStats.fatBurntCount = userdata.fatBurntCount;
         experienceSystem.levelNumber = userdata.level;
-
         resetTrainings();
     }
 
@@ -104,10 +114,6 @@ public class GenerateExcercises : MonoBehaviour
         experienceSystem.levelCapacity += 100;
         trainingsDone++;
         yield return new WaitForSeconds(.5f);
-        trainingsDone = 0;
-        trainingsLeft = 4;
-        experienceSystem.levelNumber = 0;
-        displayStats.fatBurntCount = 0;
         SaveSystem.saveUserData(this);
     }
 }

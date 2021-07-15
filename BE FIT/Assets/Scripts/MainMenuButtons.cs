@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class MainMenuButtons : MonoBehaviour
 {
     [SerializeField] private Animator menu;
-    [SerializeField] private Animator loseWeight;
     [SerializeField] private Animator healthyFood;
     [SerializeField] private Animator stats;
     [SerializeField] private GenerateExcercises generateExcercises;
     [SerializeField] private Button nextExerciseButton;
     [SerializeField] private HealthyFoodButtons healthyFoodButtons;
+    [SerializeField] private Animator loseWeight;
     private bool pressedBefore = false;
 
     public void openMenu()
@@ -34,22 +34,14 @@ public class MainMenuButtons : MonoBehaviour
         loseWeight.SetBool("isPressed", false);
     }
 
-    public void startTraining()
-    {
-        if (!(generateExcercises.trainingsLeft == 0))
-        {
-            nextExerciseButton.interactable = true;
-            loseWeight.SetBool("goBack", false);
-            loseWeight.SetBool("isTraining", true);
-        }
-        else
-        {
-            StartCoroutine(wait());
-        }
-    }
-
     public void BackToLoseWeightMenu()
     {
+        if(!generateExcercises.isTrainingDone)
+        {
+            generateExcercises.trainingsLeft--;
+            generateExcercises.trainingsLeftDisplay.text = generateExcercises.trainingsLeft.ToString();
+            SaveSystem.saveUserData(generateExcercises);
+        }
         loseWeight.SetBool("goBack", true);
         loseWeight.SetBool("isTraining", false);
     }
