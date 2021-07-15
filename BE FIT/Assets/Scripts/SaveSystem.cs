@@ -29,7 +29,6 @@ public static class SaveSystem
         }
         else 
         {
-            //error
             return null;
         }
     }

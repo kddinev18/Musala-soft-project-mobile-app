@@ -3214,7 +3214,7 @@ GameObject:
   - component: {fileID: 1065478392}
   - component: {fileID: 1065478391}
   m_Layer: 0
-  m_Name: Save/DataFilesManager
+  m_Name: SaveDataFilesManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3233,11 +3233,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   excercises: []
+  descriptionContainer: []
   description: []
   calories: []
   healthyFoodName: []
   healthyFoodDesc: []
   healthyFoodDescConatiner: []
+  notificationManager: {fileID: 0}
 --- !u!4 &1065478392
 Transform:
   m_ObjectHideFlags: 0

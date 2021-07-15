@@ -22,7 +22,6 @@ public class GenerateExcercises : MonoBehaviour
 
     public int trainingsDone = 0;
 
-    private bool isStarted = false;
     private int excerciseDone = 1;
 
     void Start()
@@ -71,9 +70,8 @@ public class GenerateExcercises : MonoBehaviour
         int randomindex = UnityEngine.Random.Range(0, excerciseHolder.excercises.Length);
         excercisesNameDisplay.text = excerciseName[randomindex];
         excercisesDescriptionDisplay.text = excerciseDesc[randomindex];
-        int fatBurntCointainer;
-        Int32.TryParse(calories[randomindex], out int cointainer);
-        displayStats.fatBurntCount += cointainer;
+        Int32.TryParse(calories[randomindex], out int fatBurntCointainer);
+        displayStats.fatBurntCount += fatBurntCointainer;
         excerciseDone++;
     }
 
