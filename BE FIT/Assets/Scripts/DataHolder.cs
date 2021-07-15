@@ -9,6 +9,7 @@ using System.Linq;
 public class DataHolder : MonoBehaviour
 {
     public string[] excercises;
+    public string[] descriptionContainer;
     public string[] description;
     public string[] calories;
     public string[] healthyFoodName;
@@ -18,7 +19,12 @@ public class DataHolder : MonoBehaviour
     void Start()
     {
         excercises = File.ReadAllLines("Assets\\Data Files\\ExcerciseNameData.txt").ToArray();
-        description = File.ReadAllLines("Assets\\Data Files\\ExcerciseDescriptionData.txt").ToArray();
+        descriptionContainer = File.ReadAllLines("Assets\\Data Files\\ExcerciseDescriptionData.txt").ToArray();
+        description = new string [descriptionContainer.Length];
+        for (int i = 0; i < descriptionContainer.Length; i++)
+        {
+            description[i] = separate(descriptionContainer[i]);
+        }
         calories = File.ReadAllLines("Assets\\Data Files\\ExcerciseCaloriesData.txt").ToArray();
 
         healthyFoodName = File.ReadAllLines("Assets\\Data Files\\HealthyFoodNameData.txt").ToArray();

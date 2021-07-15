@@ -3237,6 +3237,7 @@ MonoBehaviour:
   calories: []
   healthyFoodName: []
   healthyFoodDesc: []
+  healthyFoodDescConatiner: []
 --- !u!4 &1065478392
 Transform:
   m_ObjectHideFlags: 0
@@ -3385,7 +3386,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 720e25ded1a1a1b47bfa70f20839d720, type: 3}
-    m_FontSize: 86
+    m_FontSize: 72
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1

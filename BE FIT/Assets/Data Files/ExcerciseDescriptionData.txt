@@ -1,3 +1,3 @@
-Lay
-Jump
-Do Plank
+Lay,uham,olala
+Jump,uham,olala
+Do Plank,uham,olala
