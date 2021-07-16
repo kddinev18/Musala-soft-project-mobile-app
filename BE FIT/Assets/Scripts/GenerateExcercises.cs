@@ -95,6 +95,7 @@ public class GenerateExcercises : MonoBehaviour
             Int32.TryParse(calories[randomindex], out int fatBurntCointainer);
             displayStats.fatBurntCount += fatBurntCointainer;
             excerciseDone++;
+            StartCoroutine(waitButton(randomindex, count));
         }
     }
 
@@ -107,9 +108,17 @@ public class GenerateExcercises : MonoBehaviour
         }
     }
 
+    IEnumerator waitButton(int index, string[] count)
+    {
+        Int32.TryParse(count[index], out int countCointainer);
+        nextExerciseButton.interactable = false;
+        yield return new WaitForSeconds(countCointainer);
+        nextExerciseButton.interactable = true;
+    }
+
     IEnumerator wait()
     {
-        yield return new WaitForSeconds(.2f);
+        yield return new WaitForSeconds(.3f);
         UserData userdata = SaveSystem.loadUserData();
         trainingsLeft = userdata.trainingsLeftToday;
         trainingsLeftDisplay.text = trainingsLeft.ToString();
